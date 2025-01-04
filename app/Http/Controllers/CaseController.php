@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
-use App\Models\UserCase;
+use App\Models\ClientCase;
 use Illuminate\Http\Request;
 
 class CaseController extends Controller
@@ -21,7 +21,7 @@ class CaseController extends Controller
         return redirect()->route('clients.show', $client);
     }
 
-    public function update(Request $request, UserCase $case)
+    public function update(Request $request, ClientCase $case)
     {
         $request->validate([
             'description' => 'required|string',
@@ -33,7 +33,7 @@ class CaseController extends Controller
         return redirect()->route('clients.show', $case->client);
     }
 
-    public function destroy(UserCase $case)
+    public function destroy(ClientCase $case)
     {
         $client = $case->client;
         $case->delete();
