@@ -11,10 +11,22 @@
 <nav class="bg-gray-800 p-4">
     <div class="container mx-auto">
         <div class="flex justify-between items-center">
-            <a href="{{ route('clients.index') }}" class="text-white">CRM Мастерская</a>
+            <a href="{{ route('index') }}" class="text-white">CRM Мастерская</a>
             <div>
                 @if (Auth::check())
-                    <a href="{{ route('logout') }}" class="text-white"
+                    <a href="{{ route('clients.index') }}" class="text-white">
+                        Клиенты
+                    </a>
+                    <a href="#" class="text-white ml-4">
+                        Категории
+                    </a>
+                    <a href="#" class="text-white ml-4">
+                        Персонал
+                    </a>
+                    <a href="#" class="text-white ml-4">
+                        Отчёты
+                    </a>
+                    <a href="{{ route('logout') }}" class="text-white ml-4"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Выйти
                     </a>

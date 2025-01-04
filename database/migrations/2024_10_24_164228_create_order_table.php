@@ -8,11 +8,13 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('client_case', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->text('description');
+            $table->text('solution');
             $table->enum('status', ['open', 'in_progress', 'closed']);
+            $table->dateTime('closed_at')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('set null');
             $table->timestamps();
         });
@@ -20,6 +22,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('cases');
+        Schema::dropIfExists('orders');
     }
 };

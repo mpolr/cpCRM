@@ -5,9 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ClientCase extends Model
+class Order extends Model
 {
-    protected $fillable = ['client_id', 'description', 'status', 'user_id'];
+    protected $table = 'orders';
+
+    protected $fillable = [
+        'client_id',
+        'description',
+        'solution',
+        'status',
+        'closed_at',
+        'user_id',
+    ];
 
     public function client(): BelongsTo
     {

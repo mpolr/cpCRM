@@ -1,15 +1,21 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CaseController;
 
-// Главная страница с списком клиентов (доступно после авторизации)
-Route::get('/', [ClientController::class, 'index'])->middleware('auth')->name('clients.index');
-
 // Роуты для работы с клиентами
 Route::middleware('auth')->group(function () {
+    Route::get('/', [MainController::class, 'index'])->name('index');
+
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+    Route::put('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
+    Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
+
     Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
     Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
     Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
@@ -17,11 +23,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/clients/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit');
     Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
     Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
-
-    // Роуты для работы с обращениями (cases)
-    Route::post('/clients/{client}/cases', [CaseController::class, 'store'])->name('cases.store');
-    Route::put('/cases/{case}', [CaseController::class, 'update'])->name('cases.update');
-    Route::delete('/cases/{case}', [CaseController::class, 'destroy'])->name('cases.destroy');
 });
 
 // Роуты для аутентификации

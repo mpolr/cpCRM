@@ -9,10 +9,15 @@ class Client extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'phone', 'email'];
+    protected $fillable = [
+        'name',
+        'surname',
+        'phone',
+        'email'
+    ];
 
     public function cases(): HasMany
     {
-        return $this->hasMany(ClientCase::class);
+        return $this->hasMany(Order::class);
     }
 }
