@@ -22,7 +22,7 @@
                 <tr>
                     <td class="px-4 py-2">{{ $order->description }}</td>
                     <td class="px-4 py-2">{{ $order->solution }}</td>
-                    <td class="px-4 py-2">{{ $order->status }}</td>
+                    <td class="px-4 py-2">{{ $order->getStatus() }}</td>
                     <td class="px-4 py-2">{{ $order->created_at }}</td>
                     <td class="px-4 py-2">
                         <a href="{{ route('orders.show', $order->id) }}" class="text-indigo-600">Просмотр</a> |
