@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     {
         $defaultUser = new User();
         $defaultUser->name = 'Сергей';
-        $defaultUser->email = 'diablo_xxx@mail.ru';
+        $defaultUser->email = 'diablo_xxl@mail.ru';
         $defaultUser->role = 'admin';
         $defaultUser->password = 'admin';
         $defaultUser->save();

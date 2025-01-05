@@ -20,7 +20,9 @@
                 <label for="description" class="block text-sm font-medium text-gray-700">
                     Обращение
                 </label>
-                <input id="description" name="description" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('description') }}">
+                <textarea id="description" name="description" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    {{ trim(old('description')) }}
+                </textarea>
                 @error('description')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
@@ -30,7 +32,9 @@
                 <label for="solution" class="block text-sm font-medium text-gray-700">
                     Решение
                 </label>
-                <input id="solution" name="solution" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('solution') }}">
+                <textarea id="solution" name="solution" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    {{ trim(old('solution')) }}
+                </textarea>
                 @error('solution')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror

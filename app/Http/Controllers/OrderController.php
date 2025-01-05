@@ -23,11 +23,25 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'phone' => 'required|string',
             'description' => 'required|string',
-            'solution' => 'required|string',
+            'solution' => 'string|nullable',
         ]);
 
-        Order::create($request->all());
+        $client = Client::where('phone', $request->get('phone'))->first();
+        if ($client === null) {
+            $client = new Client();
+            $client->phone = $request->get('phone');
+            $client->save();
+        }
+
+        $order = new Order();
+        $order->client_id = $client->id;
+        $order->description = $request->get('description');
+        $order->solution = $request->get('solution');
+        $order->user_id = auth()->id();
+        $order->save();
+
         return redirect()->route('index');
     }
 
